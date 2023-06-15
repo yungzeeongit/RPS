@@ -1,0 +1,149 @@
+TUPLES
+
+Tuples are immutable data types i.e, they are data types that cn not be modified once they've been created. Data modifying methods 
+like sort() would not modify tuples. 
+
+names = ("west","east","north")
+
+You can add another tuple using the + operator like so;
+
+newTuple = names + ("south", "dakorta")
+this will return a new turple with the new turple added to names.
+
+Dictionaries(equivalent of objects in JS)
+
+Dictionaries hold data in key pair value,eg mydog = {"name" :"lucky", "age":"29,"color":"brown" }
+
+All the methods like pop,len,etc can be run on a dictionary. 
+ To change the value of a key, eg lets say we want to change mydog's name to jackie,we can simply do
+
+mydog["name"] = "jackie" 
+
+other methods include;
+ get() #for retrieving a value by entering its key in the method's parenthesis
+ popitem() #works like pop but it removes the last item in the dictionary
+ name.keys() #will return a list of all the keys in the dictionary
+ name.value()
+ name.copy #to make a copy of dictionary
+ 
+
+**SETS 
+   sets are structured like dictionaries but they only have values and no keys,eg {'lucky','beans','coke'}. Sets in
+python can be treated like mathematical sets i.e we can have an intersection, a union 
+
+set1 = {'washed', 'bard', 'alanai'}
+set2 = {'gpt-3','bard', 'gpt-4'}
+
+intersect = set1 & set2 #will return {"bard"}
+
+union = set1 | set2 #will return {'washed', 'bard', 'alanai', 'gpt-3', 'gpt-4'}
+
+difference = set1 - set2 #checks for which items are present in set1 that are absent in set2
+
+subset = set1 < set2 #checks if set1 is a subset of set2, i.e if set 2 has all the values present in set1
+
+superset = set1 > set2 #checks if set1 is a superset of set2
+
+a set cannot have two of the same item, if the same item shows up more than once, when the set is printed,the
+item will be represented only once.
+
+***FUNCTIONS
+ Functions let us create a set of instructions that can be run when needed. Functions are good for code
+readability and reusability. To use a function, the function name is "called".
+
+Parameters and Arguements: Parameters are the values passed inside the function during function definition while arguements 
+are the values passed when the function is called.
+
+Variable Scope: refers to how accessable a variable is depending on where it is declared. 
+****A global variable is a variable declared outside and before a function
+and it can be accessed inside and outside the scope of the function as long as it has already been declared. 
+****A local variable is a variable that is declared inside a function, it can not be accessed by a code outside the scope of the
+function.
+****In nested functions, to access a variable that was declared in the outer function,we have to use the 'nonlocal' keyword
+before the variable name e.g
+
+def outerfunction():
+    count = 1
+
+
+    def nestedfunction():
+        nonlocal count
+        count += 2
+
+    nestedfunction()
+
+
+
+Nested Function: they are functions that are written within the scope of another function called the outer function
+i.e they can only be called within the scope of that function. They come in handy when the nested function contains code
+that is useful only to the outer function.
+
+
+OBJECTS
+ Everything in python is an object, from integers to strings to tuples and lists, everything. Objects have attributes and
+methods which can be accesed with the dot notation, an object has access to all the methods and attributes available to the
+data-type which its value(s) represents i.e, age = 8: age has access to all methods and attributes available to integers.
+
+
+LOOPS
+ There are two kinds of loops in python, the while loop and the for loop.
+ While Loops: A while loop is created using the 'while' keyword.A while loop continues running till the condition evaluates as false
+if there is no command to evaluate the condition as false, it becomes an infinite loop i.e it keeps running continously e.g;
+
+
+condition = True 
+while condition == True:
+      print('True')
+
+ the loop above is an infinite loop because the condition will always be true. 
+
+count = 0
+
+while count < 10:
+      print('i am counting!')
+      count += 1
+
+print('count over 10')
+
+the loop above is a finite loop because the condition will become false once count equals 10, thus the loop will stop iterating
+
+For Loops: For loops are commonly used to iterate over items in a list, the advantage it has over while loops is that it does not
+require a separate variable and conditional to check it's value. e.g
+
+items = [1,2,3,4]
+
+for item in items:
+    print(item)
+
+the code above simply starts printing from 1 and stops once it gets to the end of the list which is 4, to print the index of each
+item in the list, we can modify the code as follows :
+ 
+items = [1,2,3,4]
+
+for index,item in enumerate(items):
+    print(index,item)
+
+this code will print both the items in the list and their respective indicies beside them,it will do the same for a list of strings too.
+
+The range method can be used with the for loop to determine the number of times the loop will run i.e:
+
+for item in range(10):
+    print(item)
+
+the code above will print 0 to 9 and stop because the range method has been used to limit the iteration to 10 times.
+
+
+Break and Continue: break and continue are used to modify how loops work. Continue would make a loop skip the current iteration on which 
+it is called i.e:
+
+for item in range(5)
+    if item == 2:
+       continue
+    print(item)
+
+the code will skip the number 2 because of the continue.
+A break on the other hand causes the loop to stop iterating totally, i.e if i had used a break in the code above, it would have printed only
+0 and 1.
+
+
+CLASSES
