@@ -1,5 +1,4 @@
 TUPLES
-
 Tuples are immutable data types i.e, they are data types that cn not be modified once they've been created. Data modifying methods 
 like sort() would not modify tuples. 
 
@@ -17,6 +16,8 @@ Dictionaries hold data in key pair value,eg mydog = {"name" :"lucky", "age":"29,
 All the methods like pop,len,etc can be run on a dictionary. 
  To change the value of a key, eg lets say we want to change mydog's name to jackie,we can simply do
 
+***********
+
 mydog["name"] = "jackie" 
 
 other methods include;
@@ -26,10 +27,14 @@ other methods include;
  name.value()
  name.copy #to make a copy of dictionary
  
+***********
+
 
 **SETS 
    sets are structured like dictionaries but they only have values and no keys,eg {'lucky','beans','coke'}. Sets in
 python can be treated like mathematical sets i.e we can have an intersection, a union 
+
+***********
 
 set1 = {'washed', 'bard', 'alanai'}
 set2 = {'gpt-3','bard', 'gpt-4'}
@@ -43,6 +48,8 @@ difference = set1 - set2 #checks for which items are present in set1 that are ab
 subset = set1 < set2 #checks if set1 is a subset of set2, i.e if set 2 has all the values present in set1
 
 superset = set1 > set2 #checks if set1 is a superset of set2
+
+***********
 
 a set cannot have two of the same item, if the same item shows up more than once, when the set is printed,the
 item will be represented only once.
@@ -62,6 +69,8 @@ function.
 ****In nested functions, to access a variable that was declared in the outer function,we have to use the 'nonlocal' keyword
 before the variable name e.g
 
+***********
+
 def outerfunction():
     count = 1
 
@@ -71,6 +80,8 @@ def outerfunction():
         count += 2
 
     nestedfunction()
+
+***********
 
 
 
@@ -90,6 +101,8 @@ LOOPS
  While Loops: A while loop is created using the 'while' keyword.A while loop continues running till the condition evaluates as false
 if there is no command to evaluate the condition as false, it becomes an infinite loop i.e it keeps running continously e.g;
 
+***********
+
 
 condition = True 
 while condition == True:
@@ -105,30 +118,44 @@ while count < 10:
 
 print('count over 10')
 
+***********
+
 the loop above is a finite loop because the condition will become false once count equals 10, thus the loop will stop iterating
 
 For Loops: For loops are commonly used to iterate over items in a list, the advantage it has over while loops is that it does not
 require a separate variable and conditional to check it's value. e.g
+
+***********
 
 items = [1,2,3,4]
 
 for item in items:
     print(item)
 
+***********
+
 the code above simply starts printing from 1 and stops once it gets to the end of the list which is 4, to print the index of each
 item in the list, we can modify the code as follows :
  
+***********
+
 items = [1,2,3,4]
 
 for index,item in enumerate(items):
     print(index,item)
 
+***********
+
 this code will print both the items in the list and their respective indicies beside them,it will do the same for a list of strings too.
 
 The range method can be used with the for loop to determine the number of times the loop will run i.e:
 
+***********
+
 for item in range(10):
     print(item)
+
+***********
 
 the code above will print 0 to 9 and stop because the range method has been used to limit the iteration to 10 times.
 
@@ -136,10 +163,14 @@ the code above will print 0 to 9 and stop because the range method has been used
 Break and Continue: break and continue are used to modify how loops work. Continue would make a loop skip the current iteration on which 
 it is called i.e:
 
+***********
+
 for item in range(5)
     if item == 2:
        continue
     print(item)
+
+***********
 
 the code will skip the number 2 because of the continue.
 A break on the other hand causes the loop to stop iterating totally, i.e if i had used a break in the code above, it would have printed only
@@ -147,3 +178,259 @@ A break on the other hand causes the loop to stop iterating totally, i.e if i ha
 
 
 CLASSES
+
+MODULES(Components in javascript)
+ Every python file is a module, modules allow us to arrange and coordinate files in a programme with multiple files. For example,
+
+
+***********
+
+FILE 1--dog.py
+
+def bark():
+    print('woof')
+
+FILE2--animals.py
+
+import dog #imports the whole dog.py file in the form of an object
+
+dog.bark() #this will print woof even though bark was defined in another file entirely
+
+###you can also import only the bark function like so;
+
+FILE2--animals.py
+
+from dog import bark #imports the bark function from the dog.py file
+
+bark() #there is no need for the dot notation since the function itself has been imported
+
+
+***********
+
+In the event that the dog.py file is in a different folder from animals.py, a __init__.py file has to be created inside that folder
+before it can be imported as a module into another file, and as in the case above you can either import only the function or the whole
+file as illustrated below;
+#assuming the dog.py file is in a folder named keep
+
+***********
+File2--animals.py
+
+from keep import dog #imports the whole file
+or
+from keep.dog import bark #imports only the bark function
+
+***********
+
+Python Standard Library: Refers to python's built in functions eg the math() and random() functions. These ready-made functions allows us
+to perform many functions easily by first importing the function like a module into our file, then calling it with an attribute that 
+performs the specific function we want like so;
+
+***********
+
+FILE#pylib.py
+
+import math
+
+root = math.sqrt(4) #the sqrt is an attribute of the maths function for getting the square root of a number
+
+print(root)  #prints out 2
+or
+ FILE#pylib.py
+
+from math import sqrt
+
+root = sqrt(4) 
+
+print(root)  #prints out 2
+ 
+***********
+""
+an expression returns 
+a value while a stat-
+ement does not
+                     ""
+
+***********
+
+
+Lambda Functions(anonymous functions) : they are functions that don not have a name just an arguement and 
+an expression and they are defined with the "lambda" keyword.
+
+***********
+
+lambda num : num * 2
+
+lambda a,b : a * b
+
+***********
+
+Lambda functions cannot be called directly, rather they have to be assigned to a variable to be used like below
+
+divider = lambda c,d : c/d
+
+print(divider(4,2)) #prints 2
+
+
+****Map, Filter, Reduce.
+
+these three functions are global functions
+
+Map: map is used to run a function upon each item in an iterable item like a list and it returns a new list 
+whose value can be changed e.g
+
+nums = [1,2,3]
+
+maptest = map(lambda a : a * 2,nums) 
+
+print(list(maptest))
+
+#the map function takes two arguements, the first is the lambda function which will perform the operation we
+wish to perform, and the second arguement is the list upon which the operation will be performed. 
+#Note that the lambda function was used so that the code is a one liner instead of the multiple line we would have 
+if we had used a regular function. ALso, the map is an object, so the list keyword was needed to get its content as
+a list.
+
+Filter: it uses the same syntax as map but its function is to filter the original iterable and returns a filtered 
+object which is a list of items that meets a predefined criteria that has been specified in the function that will 
+operate on the list.
+
+nums = [1,2,3,4]
+
+checkeven = filter(lambda n : n % 2 == 0,nums) #checks if a number can be divided by two without a remainder i.e it is an even number
+
+print(list(checkEven)) 
+
+Reduce:Unlike the map and filter methods that are readily usable, the reduce method has to first be imported from the "functools"
+library. The reduce method is used to calculate a value out of a list, i.e it isused to extract and perform arithmetic operations on
+values in a list e.g
+
+from functools import reduce
+
+sales = [
+    ("soap", 94),
+    ("drinks", 100),
+]
+
+
+addsales = reduce(lambda a,b : a[1] + b[1], sales)
+
+print(addsales)
+
+he code will return the summation of items in index 1 of the sales list which are the numbers 94 and 100,for instances where we have more than two items 
+to iterate over, we modify the lambda function like so;
+
+from functools import reduce
+
+sales = [
+    ("soap", 94),
+    ("drinks", 100),
+    ("food", 100)
+]
+
+
+addsales = reduce(lambda a,b: a + b[1] , sales,0)
+
+print(addsales)
+
+a has been modified to represent the value of sum after every iteration, while b[1] now represents the value of every item in index 1 of each tuple in the list.
+
+
+RECURSION
+ Recursion refers to the abiity of a function to call itself i.e a function is called inside the scope of that function like so;
+
+
+def factorial(n):
+    if n == 1: return 1 #base case i.e the condition that stops the recursion to prevent recursion error 
+    return n * factorial(n - 1) #recursive case i.e the function that triggers the recursion
+
+print(factorial(5))
+
+
+DECORATORS
+
+a decorator is a function that takes a separate function as a parameter and wraps that function in an inner function, 
+and it returns that inner function. e.g
+
+def logtime(func):
+    
+    def wrapper():
+         print("before decoration")
+         val = func()               #the func parameter is an object that represents the decorated function,
+         print("after decoration")  #it can be any word but must be the same with the arguement passed into the outer function  
+         return val
+    return wrapper
+
+
+@logtime   #decorators are defined with the @ then folowed by the function name
+def decorated()
+    print('i am the decorated function')
+
+decorators come in very handy when you need to run the same code on multiple functions.
+
+
+PIP
+pip is used to install packages in python, packages are extra custom functions which are not readily available in the phon standard
+library but were creayed by individuals or companies and made available for public use as open source softwares. 
+
+pip install requests #we are using pip to install a package called request
+
+pip install -U requests #to update a package to it's latest version
+
+pip uninstall requests #to uninstall a package
+
+pip show requests #displays information about an installed package
+
+once a package has been installed in a single file in a project, other files in the project can use it too.
+
+LIST COMPRESSIONS
+ List compression is a very short way of creation a new list from another list e.g
+
+numbers = [1,2,3,4,5]
+
+compressed = [n**2 for n in numbers] #for the value of every item "n" in the numbers list, raise to the power of two
+
+print(compressed)
+
+notice how short and simple the value of compressed is?.
+
+****Polymorphism
+ Polymorphism allows a functionality to be called on different types e.g
+
+class dog:
+     def eat(self):
+         print('eating dog food')
+
+class cat():
+     def eat(self):
+         print('eating cat food')
+
+
+class1 = dog()
+class2 = cat()
+
+
+class1.eat()
+class2.eat()
+
+even though both classes have the same function within them, the outputs will be different and without error.
+
+OPERATOR OVERLOADING
+ Is an advanced technique for comparing classes and make them work with python operators
+
+class dog:
+     def __init__(self,name,age):
+           self.name = name
+           self.age = age
+
+
+     def __gt__(self,other):
+         return True if self.age > other.age else False  
+
+
+jack = dog("jack", 14)
+scooby = dog("scooby", 4) 
+
+print(jack > scooby)  #returns true because jack.age is greater than scooby.age. 
+
+the __gt__ function is a operator overloading function, and is used to compare if a value is greater than another
+there are many more operator overloading functions that perform different functions. 
